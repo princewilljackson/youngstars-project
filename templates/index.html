@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <nav style="color: blueviolet">
+        <div style="display: flex; flex-direction: row; margin-left: 5%; margin-right: 5%;">
+            <div>
+                <p style="font: xx-large;">Youngstars Foundation</p>
+            </div>
+            
+            <div style="margin-left: auto">
+                <ul style="display: flex; flex-direction: row;">
+                    {% if user.is_authenticated %}
+                    <p>Welcome {{user.username}}</p>
+                    <a href="{% url 'account_logout' %}"><button style="margin-left: 25px; color: blue; border-color:blueviolet;;"><ol style="margin-left: 10px;">Logout</ol></button></a>
+                    {% else %}
+                    <a href="{% url 'account_login' %}"><button style="margin-left: 20px; color: blue; border-color:blueviolet;"><ol style="margin-left: 10px;">Login</ol></button></a>
+                    <a href="{% url 'account_signup' %}"><button style="margin-left: 25px; color: blue; border-color:blueviolet;"><ol style="text-align: center;">Signup</ol></button></a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="display: flex; flex-direction: column; text-align: center; margin-top: 10vh;">
+        <div>
+            <h2>Youngstars Foundation Grant Application Test</h2>
+        </div>
+        <div>
+            <a href="{% url 'youngstars_app:test-page'%}" type="button"><p>Proceed to Test Page</p></a>
+        </div> 
+    </div>
+    
+
+</body>
+</html>
+
+{% endblock %}
